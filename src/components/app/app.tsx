@@ -4,7 +4,8 @@ import MainPage from '../../pages/main-page/main-page.tsx';
 import FavoritesPage from '../../pages/favorites-page/favorites-page.tsx';
 import LoginPage from '../../pages/login-page/login-page.tsx';
 import OfferPage from '../../pages/offer-page/offer-page.tsx';
-import { AppRoute } from '../../const.ts';
+import PrivateRoute from '../private-route/private-route.tsx';
+import { AppRoute, AuthorizationStatus } from '../../const.ts';
 
 type AppScreenProps = {
   proposals: number;
@@ -20,7 +21,11 @@ function App({proposals}: AppScreenProps): JSX.Element {
         />
         <Route
           path={AppRoute.Favorites}
-          element={<FavoritesPage />}
+          element={
+            <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+              <FavoritesPage />
+            </PrivateRoute>
+          }
         />
         <Route
           path={AppRoute.Login}
