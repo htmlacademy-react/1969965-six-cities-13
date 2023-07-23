@@ -1,4 +1,4 @@
-function OffersPage(): JSX.Element {
+function OfferPage(): JSX.Element {
   return (
     <div className="page">
       <header className="header">
@@ -465,4 +465,4 @@ function OffersPage(): JSX.Element {
   );
 }
 
-export default OffersPage;
+export default OfferPage;
