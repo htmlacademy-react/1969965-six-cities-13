@@ -1,0 +1,15 @@
+.page-404 {
+  color: #ffffff;
+  width: 50%;
+  margin: 250px auto 0;
+  padding: 15px 10px;
+  text-align: center;
+  background-color: #4685c4;
+  transform: skewX(-15deg);
+  border-radius: 10px;
+}
+
+.page-404 a {
+  text-decoration: underline;
+}
+
