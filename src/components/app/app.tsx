@@ -39,8 +39,4 @@ function App({proposals}: AppScreenProps): JSX.Element {
   );
 }
 
-// function App(): JSX.Element {
-//   return <Page404 />;
-// }
-
 export default App;
