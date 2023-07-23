@@ -6,6 +6,7 @@ import LoginPage from '../../pages/login-page/login-page.tsx';
 import OfferPage from '../../pages/offer-page/offer-page.tsx';
 import PrivateRoute from '../private-route/private-route.tsx';
 import { AppRoute, AuthorizationStatus } from '../../const.ts';
+import { HelmetProvider } from 'react-helmet-async';
 
 type AppScreenProps = {
   proposals: number;
@@ -13,34 +14,36 @@ type AppScreenProps = {
 
 function App({proposals}: AppScreenProps): JSX.Element {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path={AppRoute.Root}
-          element={<MainPage proposals = {proposals}/>}
-        />
-        <Route
-          path={AppRoute.Favorites}
-          element={
-            <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
-              <FavoritesPage />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path={AppRoute.Login}
-          element={<LoginPage />}
-        />
-        <Route
-          path={AppRoute.Offer}
-          element={<OfferPage />}
-        />
-        <Route
-          path="*"
-          element={<Page404 />}
-        />
-      </Routes>
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path={AppRoute.Root}
+            element={<MainPage proposals = {proposals}/>}
+          />
+          <Route
+            path={AppRoute.Favorites}
+            element={
+              <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+                <FavoritesPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path={AppRoute.Login}
+            element={<LoginPage />}
+          />
+          <Route
+            path={AppRoute.Offer}
+            element={<OfferPage />}
+          />
+          <Route
+            path="*"
+            element={<Page404 />}
+          />
+        </Routes>
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }
 
