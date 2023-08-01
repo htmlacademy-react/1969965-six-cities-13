@@ -3,6 +3,8 @@ import { countRating } from './utils';
 
 type CardProps = {
   offer: Offer;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
 }
 
 const BOOKMARK_BUTTON_CLASS = {
@@ -10,11 +12,11 @@ const BOOKMARK_BUTTON_CLASS = {
   Inactive: 'place-card__bookmark-button button'
 };
 
-function Card({offer}: CardProps): JSX.Element {
+function Card({offer, onMouseEnter, onMouseLeave}: CardProps): JSX.Element {
   const {title, type, price, previewImage, isFavorite, isPremium, rating} = offer;
 
   return (
-    <article className="cities__card place-card">
+    <article onMouseEnter = {onMouseEnter} onMouseLeave = {onMouseLeave} className="cities__card place-card">
       {isPremium ? <div className="place-card__mark"><span>Premium</span></div> : ''}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
