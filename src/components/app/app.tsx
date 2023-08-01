@@ -7,12 +7,17 @@ import OfferPage from '../../pages/offer-page/offer-page.tsx';
 import PrivateRoute from '../private-route/private-route.tsx';
 import { AppRoute, AuthorizationStatus } from '../../const.ts';
 import { HelmetProvider } from 'react-helmet-async';
+import { Offer, OfferDetailed } from '../../types/offer.ts';
+import { Comment } from '../../types/comment.ts';
 
 type AppScreenProps = {
   proposals: number;
+  offers: Offer[];
+  detailedOffers: OfferDetailed[];
+  comments: Comment[];
 }
 
-function App({proposals}: AppScreenProps): JSX.Element {
+function App({proposals, offers, detailedOffers, comments}: AppScreenProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>

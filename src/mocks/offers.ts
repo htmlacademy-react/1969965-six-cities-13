@@ -1,6 +1,6 @@
 import { Offer } from '../types/offer';
 
-export const Offers: Offer[] = [
+export const offers: Offer[] = [
   {
     id: '0c6fdd1a-552a-4fad-b11d-f28607370c73',
     title: 'Wood and stone place',
