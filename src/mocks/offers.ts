@@ -1,4 +1,4 @@
-import { Offer } from '../types/offers';
+import { Offer } from '../types/offer';
 
 export const Offers: Offer[] = [
   {
@@ -92,28 +92,5 @@ export const Offers: Offer[] = [
     isFavorite: false,
     isPremium: false,
     rating: 4.5
-  },
-  {
-    id: '18766510-7cfc-407a-9f8c-a78ca277a553',
-    title: 'Tile House',
-    type: 'hotel',
-    price: 186,
-    previewImage: 'https://13.design.pages.academy/static/hotel/2.jpg',
-    city: {
-      name: 'Paris',
-      location: {
-        latitude: 48.85661,
-        longitude: 2.351499,
-        zoom: 13
-      }
-    },
-    location: {
-      latitude: 48.87561,
-      longitude: 2.375499,
-      zoom: 16
-    },
-    isFavorite: false,
-    isPremium: true,
-    rating: 3.8
   }
 ];
