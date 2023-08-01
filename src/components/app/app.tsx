@@ -17,15 +17,12 @@ type AppScreenProps = {
   comments: Comment[];
 }
 
-function App({proposals, offers, detailedOffers, comments}: AppScreenProps): JSX.Element {
+function App({proposals, offers}: AppScreenProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
-          <Route
-            path={AppRoute.Root}
-            element={<MainPage proposals = {proposals}/>}
-          />
+          <Route path={AppRoute.Root} element={<MainPage proposals = {proposals} offers = {offers} />}/>
           <Route
             path={AppRoute.Favorites}
             element={

@@ -1,12 +1,14 @@
 import Card from '../../components/card/card.tsx';
 import Logo from '../../components/logo/logo.tsx';
 import { Helmet } from 'react-helmet-async';
+import { Offer } from '../../types/offer.ts';
 
 type MainScreenProps = {
   proposals: number;
+  offers: Offer[];
 }
 
-function MainPage({proposals}: MainScreenProps): JSX.Element {
+function MainPage({proposals, offers}: MainScreenProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <Helmet>
@@ -112,11 +114,7 @@ function MainPage({proposals}: MainScreenProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
+                {offers.map((offer) => <Card offer = {offer} key = {offer.id}/>)}
               </div>
             </section>
             <div className="cities__right-section">
