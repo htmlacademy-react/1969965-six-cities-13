@@ -1,7 +1,8 @@
-import Card from '../../components/card/card.tsx';
+// import Card from '../../components/card/card.tsx';
 import Logo from '../../components/logo/logo.tsx';
 import { Helmet } from 'react-helmet-async';
 import { Offer } from '../../types/offer.ts';
+import OffersList from '../../components/offers-list/offers-list.tsx';
 
 type MainScreenProps = {
   proposals: number;
@@ -113,9 +114,7 @@ function MainPage({proposals, offers}: MainScreenProps): JSX.Element {
                   </li>
                 </ul>
               </form>
-              <div className="cities__places-list places__list tabs__content">
-                {offers.map((offer) => <Card offer = {offer} key = {offer.id}/>)}
-              </div>
+              <OffersList offers = {offers}/>
             </section>
             <div className="cities__right-section">
               <section className="cities__map map" />
