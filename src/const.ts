@@ -1,7 +1,3 @@
-export const Setting = {
-  Proposals: 312
-};
-
 export const RATING_PER_STAR = 20;
 
 export enum AppRoute {

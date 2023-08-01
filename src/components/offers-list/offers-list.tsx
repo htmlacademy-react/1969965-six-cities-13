@@ -14,3 +14,4 @@ function OffersList({offers}: OffersListProps): JSX.Element {
 }
 
 export default OffersList;
+

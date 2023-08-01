@@ -5,11 +5,10 @@ import { Offer } from '../../types/offer.ts';
 import OffersList from '../../components/offers-list/offers-list.tsx';
 
 type MainScreenProps = {
-  proposals: number;
   offers: Offer[];
 }
 
-function MainPage({proposals, offers}: MainScreenProps): JSX.Element {
+function MainPage({offers}: MainScreenProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <Helmet>
@@ -87,7 +86,7 @@ function MainPage({proposals, offers}: MainScreenProps): JSX.Element {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{proposals} places to stay in Amsterdam</b>
+              <b className="places__found">{offers.length} places to stay in Amsterdam</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>
