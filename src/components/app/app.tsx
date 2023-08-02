@@ -8,15 +8,15 @@ import PrivateRoute from '../private-route/private-route.tsx';
 import { AppRoute, AuthorizationStatus } from '../../const.ts';
 import { HelmetProvider } from 'react-helmet-async';
 import { Offer, OfferDetailed } from '../../types/offer.ts';
-import { Comment } from '../../types/comment.ts';
+import { Review } from '../../types/review.ts';
 
 type AppScreenProps = {
   offers: Offer[];
   detailedOffers: OfferDetailed[];
-  comments: Comment[];
+  reviews: Review[];
 }
 
-function App({offers, detailedOffers}: AppScreenProps): JSX.Element {
+function App({offers, detailedOffers, reviews}: AppScreenProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -36,7 +36,7 @@ function App({offers, detailedOffers}: AppScreenProps): JSX.Element {
           />
           <Route
             path={`${AppRoute.Offer}/:id`}
-            element={<OfferPage offers = {offers} detailedOffers = {detailedOffers}/>}
+            element={<OfferPage reviews={reviews} offers = {offers} detailedOffers = {detailedOffers}/>}
           />
           <Route
             path="*"
