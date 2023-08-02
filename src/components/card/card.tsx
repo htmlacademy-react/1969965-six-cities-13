@@ -3,7 +3,7 @@ import { countRating } from './utils';
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import AddToFavoriteButton from '../add-to-favorite-btn/add-to-favorite-btn';
-import { FavoriteBtnClassModifier, FavoriteBtnSize } from '../../const';
+import { PagesClassModifier, FavoriteBtnSize } from '../../const';
 
 type CardProps = {
   offer: Offer;
@@ -36,7 +36,7 @@ function Card({offer, onMouseEnter, onMouseLeave}: CardProps): JSX.Element {
             <b className="place-card__price-value">€{price}</b>
             <span className="place-card__price-text">/&nbsp;night</span>
           </div>
-          <AddToFavoriteButton isFavorite = {isFavorite} classModifier={FavoriteBtnClassModifier.CARD} size={FavoriteBtnSize.CARD}/>
+          <AddToFavoriteButton isFavorite = {isFavorite} classModifier={PagesClassModifier.CARD} size={FavoriteBtnSize.CARD}/>
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">

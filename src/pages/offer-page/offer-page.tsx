@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { Offer, OfferDetailed } from '../../types/offer';
 import { useParams, Navigate } from 'react-router-dom';
-import { AppRoute, FavoriteBtnClassModifier, FavoriteBtnSize } from '../../const';
+import { AppRoute, PagesClassModifier, FavoriteBtnSize } from '../../const';
 import { countRating } from '../../components/card/utils';
 import OfferGallery from '../../components/offer-gallery/offer-gallery';
 import AddToFavoriteButton from '../../components/add-to-favorite-btn/add-to-favorite-btn';
@@ -47,7 +47,7 @@ function OfferPage({detailedOffers, offers, reviews} : OfferPageProps): JSX.Elem
                 <h1 className="offer__name">
                   {title}
                 </h1>
-                <AddToFavoriteButton classModifier = {FavoriteBtnClassModifier.OFFER} isFavorite = {isFavorite} size = {FavoriteBtnSize.OFFER}/>
+                <AddToFavoriteButton classModifier = {PagesClassModifier.OFFER} isFavorite = {isFavorite} size = {FavoriteBtnSize.OFFER}/>
               </div>
               <div className="offer__rating rating">
                 <div className="offer__stars rating__stars">
