@@ -14,3 +14,19 @@ export enum AuthorizationStatus {
   Unknown = 'UNKNOWN'
 }
 
+export const FavoriteBtnClassModifier = {
+  OFFER: 'offer',
+  CARD: 'place-card'
+};
+
+export const FavoriteBtnSize = {
+  OFFER: {
+    width: 31,
+    height: 33
+  },
+  CARD: {
+    width: 18,
+    height: 19
+  }
+};
+

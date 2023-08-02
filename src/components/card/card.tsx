@@ -2,7 +2,8 @@ import { Offer } from '../../types/offer';
 import { countRating } from './utils';
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
-import { getFavoriteStyles } from '../../utils';
+import AddToFavoriteButton from '../add-to-favorite-btn/add-to-favorite-btn';
+import { FavoriteBtnClassModifier, FavoriteBtnSize } from '../../const';
 
 type CardProps = {
   offer: Offer;
@@ -35,24 +36,7 @@ function Card({offer, onMouseEnter, onMouseLeave}: CardProps): JSX.Element {
             <b className="place-card__price-value">€{price}</b>
             <span className="place-card__price-text">/&nbsp;night</span>
           </div>
-
-          {/* в компонент */}
-          <button
-            className='place-card__bookmark-button button'
-            type="button"
-          >
-            <svg
-              className="place-card__bookmark-icon"
-              width={18}
-              height={19}
-              style={getFavoriteStyles(isFavorite)}
-            >
-              <use xlinkHref="#icon-bookmark" />
-            </svg>
-            <span className="visually-hidden">To bookmarks</span>
-          </button>
-
-
+          <AddToFavoriteButton isFavorite = {isFavorite} classModifier={FavoriteBtnClassModifier.CARD} size={FavoriteBtnSize.CARD}/>
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">

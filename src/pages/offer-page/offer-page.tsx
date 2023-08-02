@@ -2,11 +2,11 @@ import Logo from '../../components/logo/logo';
 import { Helmet } from 'react-helmet-async';
 import { Offer, OfferDetailed } from '../../types/offer';
 import { useParams, Navigate } from 'react-router-dom';
-import { AppRoute } from '../../const';
+import { AppRoute, FavoriteBtnClassModifier, FavoriteBtnSize } from '../../const';
 import { countRating } from '../../components/card/utils';
 import { turnFirstCharToUppercase } from './utils';
-import { getFavoriteStyles } from '../../utils';
 import OfferGallery from '../../components/offer-gallery/offer-gallery';
+import AddToFavoriteButton from '../../components/add-to-favorite-btn/add-to-favorite-btn';
 
 type OfferPageProps = {
   detailedOffers: OfferDetailed[];
@@ -77,15 +77,7 @@ function OfferPage({detailedOffers, offers} : OfferPageProps): JSX.Element {
                 <h1 className="offer__name">
                   {title}
                 </h1>
-
-                {/* в компонент */}
-                <button className='offer__bookmark-button button' type="button">
-                  <svg className="offer__bookmark-icon" width={31} height={33} style={getFavoriteStyles(isFavorite)}>
-                    <use xlinkHref="#icon-bookmark" />
-                  </svg>
-                  <span className="visually-hidden">To bookmarks</span>
-                </button>
-
+                <AddToFavoriteButton classModifier = {FavoriteBtnClassModifier.OFFER} isFavorite = {isFavorite} size = {FavoriteBtnSize.OFFER}/>
               </div>
 
 
