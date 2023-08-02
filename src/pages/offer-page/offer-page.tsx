@@ -1,12 +1,35 @@
 import Logo from '../../components/logo/logo';
 import { Helmet } from 'react-helmet-async';
+import { Offer, OfferDetailed } from '../../types/offer';
+import { useParams, Navigate } from 'react-router-dom';
+import { AppRoute } from '../../const';
+import { countRating } from '../../components/card/utils';
+import { turnFirstCharToUppercase } from './utils';
+import { getFavoriteStyles } from '../../utils';
 
-function OfferPage(): JSX.Element {
+type OfferPageProps = {
+  detailedOffers: OfferDetailed[];
+  offers: Offer[];
+}
+
+function OfferPage({detailedOffers, offers} : OfferPageProps): JSX.Element {
+
+  const idContainer = useParams();
+  const offer = detailedOffers.find((elem) => elem.id === idContainer.id);
+
+  if (offer === undefined) {
+    return <Navigate to = {AppRoute.Error} />;
+  }
+
+  const { bedrooms, city, description, goods, id, host, images, isFavorite, isPremium, maxAdults, price, rating, title, type } = offer;
+
   return (
     <div className="page">
       <Helmet>
         <title>Offers</title>
       </Helmet>
+
+      {/* в компонент */}
       <header className="header">
         <div className="container">
           <div className="header__wrapper">
@@ -37,10 +60,15 @@ function OfferPage(): JSX.Element {
           </div>
         </div>
       </header>
+
+
       <main className="page__main page__main--offer">
         <section className="offer">
+
           <div className="offer__gallery-container container">
             <div className="offer__gallery">
+
+              {/* в компонент */}
               <div className="offer__image-wrapper">
                 <img
                   className="offer__image"
@@ -83,59 +111,65 @@ function OfferPage(): JSX.Element {
                   alt="Photo studio"
                 />
               </div>
+
             </div>
           </div>
+
           <div className="offer__container container">
             <div className="offer__wrapper">
-              <div className="offer__mark">
-                <span>Premium</span>
-              </div>
+              {isPremium ? <div className="offer__mark"><span>Premium</span></div> : ''}
               <div className="offer__name-wrapper">
                 <h1 className="offer__name">
-              Beautiful &amp; luxurious studio at great location
+                  {title}
                 </h1>
-                <button className="offer__bookmark-button button" type="button">
-                  <svg className="offer__bookmark-icon" width={31} height={33}>
+
+                {/* в компонент */}
+                <button className='offer__bookmark-button button' type="button">
+                  <svg className="offer__bookmark-icon" width={31} height={33} style={getFavoriteStyles(isFavorite)}>
                     <use xlinkHref="#icon-bookmark" />
                   </svg>
                   <span className="visually-hidden">To bookmarks</span>
                 </button>
+
               </div>
+
+
               <div className="offer__rating rating">
                 <div className="offer__stars rating__stars">
-                  <span style={{ width: '80%' }} />
+                  <span style={{ width: `${countRating(rating)}%` }} />
                   <span className="visually-hidden">Rating</span>
                 </div>
-                <span className="offer__rating-value rating__value">4.8</span>
+
+                <span className="offer__rating-value rating__value">{rating}</span>
               </div>
+
+              {/* в компонент */}
               <ul className="offer__features">
-                <li className="offer__feature offer__feature--entire">Apartment</li>
+                <li className="offer__feature offer__feature--entire">{turnFirstCharToUppercase(type)}</li>
                 <li className="offer__feature offer__feature--bedrooms">
               3 Bedrooms
                 </li>
                 <li className="offer__feature offer__feature--adults">
-              Max 4 adults
+              Max {maxAdults} adults
                 </li>
               </ul>
+
+
               <div className="offer__price">
-                <b className="offer__price-value">€120</b>
+                <b className="offer__price-value">€{price}</b>
                 <span className="offer__price-text">&nbsp;night</span>
               </div>
+
               <div className="offer__inside">
                 <h2 className="offer__inside-title">What&apos;s inside</h2>
+
+                {/* в компонент */}
                 <ul className="offer__inside-list">
-                  <li className="offer__inside-item">Wi-Fi</li>
-                  <li className="offer__inside-item">Washing machine</li>
-                  <li className="offer__inside-item">Towels</li>
-                  <li className="offer__inside-item">Heating</li>
-                  <li className="offer__inside-item">Coffee machine</li>
-                  <li className="offer__inside-item">Baby seat</li>
-                  <li className="offer__inside-item">Kitchen</li>
-                  <li className="offer__inside-item">Dishwasher</li>
-                  <li className="offer__inside-item">Cabel TV</li>
-                  <li className="offer__inside-item">Fridge</li>
+                  {goods.map((good) => <li key={good} className="offer__inside-item">{good}</li>)}
                 </ul>
               </div>
+
+              {/* в компонент */}
               <div className="offer__host">
                 <h2 className="offer__host-title">Meet the host</h2>
                 <div className="offer__host-user user">
@@ -164,6 +198,8 @@ function OfferPage(): JSX.Element {
                   </p>
                 </div>
               </div>
+
+              {/* в компонент */}
               <section className="offer__reviews reviews">
                 <h2 className="reviews__title">
               Reviews · <span className="reviews__amount">1</span>
@@ -310,15 +346,20 @@ function OfferPage(): JSX.Element {
                   </div>
                 </form>
               </section>
+
+
             </div>
           </div>
           <section className="offer__map map" />
         </section>
+
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">
           Other places in the neighbourhood
             </h2>
+
+            {/* в компонент OffersList*/}
             <div className="near-places__list places__list">
               <article className="near-places__card place-card">
                 <div className="near-places__image-wrapper place-card__image-wrapper">
@@ -456,6 +497,8 @@ function OfferPage(): JSX.Element {
                 </div>
               </article>
             </div>
+
+
           </section>
         </div>
       </main>
