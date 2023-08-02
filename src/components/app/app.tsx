@@ -16,7 +16,7 @@ type AppScreenProps = {
   comments: Comment[];
 }
 
-function App({offers}: AppScreenProps): JSX.Element {
+function App({offers, detailedOffers}: AppScreenProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -36,7 +36,7 @@ function App({offers}: AppScreenProps): JSX.Element {
           />
           <Route
             path={`${AppRoute.Offer}/:id`}
-            element={<OfferPage />}
+            element={<OfferPage offers = {offers} detailedOffers = {detailedOffers}/>}
           />
           <Route
             path="*"
