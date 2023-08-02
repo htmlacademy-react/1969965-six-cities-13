@@ -47,7 +47,7 @@ export const detailedOffers: OfferDetailed[] = [
       avatarUrl: 'https://13.design.pages.academy/static/host/avatar-angelina.jpg'
     },
     isPremium: true,
-    isFavorite: false,
+    isFavorite: true,
     rating: 3.9,
     bedrooms: 2,
     maxAdults: 2
