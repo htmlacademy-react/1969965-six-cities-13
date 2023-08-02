@@ -14,9 +14,11 @@ export enum AuthorizationStatus {
   Unknown = 'UNKNOWN'
 }
 
-export const FavoriteBtnClassModifier = {
+export const PagesClassModifier = {
   OFFER: 'offer',
-  CARD: 'place-card'
+  CARD: 'place-card',
+  HEADER: 'header',
+  FOOTER: 'footer'
 };
 
 export const FavoriteBtnSize = {
@@ -27,6 +29,17 @@ export const FavoriteBtnSize = {
   CARD: {
     width: 18,
     height: 19
+  }
+};
+
+export const LogoSize = {
+  HEADER: {
+    width: 81,
+    height: 41
+  },
+  FOOTER: {
+    width: 64,
+    height: 33
   }
 };
 

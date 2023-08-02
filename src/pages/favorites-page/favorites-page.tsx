@@ -2,6 +2,9 @@ import { Helmet } from 'react-helmet-async';
 import { Offer } from '../../types/offer';
 import FavoritesList from '../../components/favorites-list/favorites-list';
 import Header from '../../components/header/header';
+import { LogoSize } from '../../const';
+import Logo from '../../components/logo/logo';
+import { PagesClassModifier } from '../../const';
 
 type FavoritesPageProps = {
   offers: Offer[];
@@ -28,15 +31,7 @@ function FavoritesPage({offers}: FavoritesPageProps): JSX.Element {
         </div>
       </main>
       <footer className="footer container">
-        <a className="footer__logo-link" href="main.html">
-          <img
-            className="footer__logo"
-            src="img/logo.svg"
-            alt="6 cities logo"
-            width={64}
-            height={33}
-          />
-        </a>
+        <Logo classModifier={PagesClassModifier.FOOTER} size={LogoSize.FOOTER}/>
       </footer>
     </div>
   );

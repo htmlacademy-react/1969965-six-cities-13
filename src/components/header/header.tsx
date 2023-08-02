@@ -1,4 +1,5 @@
 import Logo from '../logo/logo';
+import { PagesClassModifier, LogoSize } from '../../const';
 
 function Header(): JSX.Element {
   return (
@@ -6,7 +7,7 @@ function Header(): JSX.Element {
       <div className="container">
         <div className="header__wrapper">
           <div className="header__left">
-            <Logo />
+            <Logo classModifier={PagesClassModifier.HEADER} size={LogoSize.HEADER}/>
           </div>
           <nav className="header__nav">
             <ul className="header__nav-list">
