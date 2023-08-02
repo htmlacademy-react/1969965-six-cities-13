@@ -67,11 +67,7 @@ function OfferPage({detailedOffers, offers, reviews} : OfferPageProps): JSX.Elem
                 <OfferGoods goods={goods}/>
               </div>
               <OfferHost host={host} description={description}/>
-
-              {/* в компонент */}
               <Reviews reviews={reviews}/>
-
-
             </div>
           </div>
           <section className="offer__map map" />
