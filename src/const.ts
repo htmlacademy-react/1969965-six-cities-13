@@ -30,3 +30,8 @@ export const FavoriteBtnSize = {
   }
 };
 
+export const DateFormat = {
+  YEAR_MONTH_DAY: 'YY-MM-DD',
+  MONTH_DAY: 'MMMM YYYY',
+};
+
