@@ -1,5 +1,8 @@
 import { Offer } from '../../types/offer';
 import { countRating } from './utils';
+import { Link } from 'react-router-dom';
+import { AppRoute } from '../../const';
+import { getFavoriteStyles } from '../../utils';
 
 type CardProps = {
   offer: Offer;
@@ -7,19 +10,15 @@ type CardProps = {
   onMouseLeave: () => void;
 }
 
-const BOOKMARK_BUTTON_CLASS = {
-  Active: 'place-card__bookmark-button place-card__bookmark-button--active button',
-  Inactive: 'place-card__bookmark-button button'
-};
-
 function Card({offer, onMouseEnter, onMouseLeave}: CardProps): JSX.Element {
-  const {title, type, price, previewImage, isFavorite, isPremium, rating} = offer;
+  const {id, title, type, price, previewImage, isFavorite, isPremium, rating} = offer;
 
   return (
     <article onMouseEnter = {onMouseEnter} onMouseLeave = {onMouseLeave} className="cities__card place-card">
       {isPremium ? <div className="place-card__mark"><span>Premium</span></div> : ''}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#">
+
+        <Link to = {`${AppRoute.Offer}/${id}`}>
           <img
             className="place-card__image"
             src={previewImage}
@@ -27,7 +26,8 @@ function Card({offer, onMouseEnter, onMouseLeave}: CardProps): JSX.Element {
             height={200}
             alt={title}
           />
-        </a>
+        </Link>
+
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
@@ -35,19 +35,24 @@ function Card({offer, onMouseEnter, onMouseLeave}: CardProps): JSX.Element {
             <b className="place-card__price-value">€{price}</b>
             <span className="place-card__price-text">/&nbsp;night</span>
           </div>
+
+          {/* в компонент */}
           <button
-            className={isFavorite ? BOOKMARK_BUTTON_CLASS.Active : BOOKMARK_BUTTON_CLASS.Inactive}
+            className='place-card__bookmark-button button'
             type="button"
           >
             <svg
               className="place-card__bookmark-icon"
               width={18}
               height={19}
+              style={getFavoriteStyles(isFavorite)}
             >
               <use xlinkHref="#icon-bookmark" />
             </svg>
             <span className="visually-hidden">To bookmarks</span>
           </button>
+
+
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
@@ -56,9 +61,9 @@ function Card({offer, onMouseEnter, onMouseLeave}: CardProps): JSX.Element {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">
+          <Link to = {`${AppRoute.Offer}/${id}`}>
             {title}
-          </a>
+          </Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
