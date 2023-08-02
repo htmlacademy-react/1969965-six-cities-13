@@ -4,10 +4,10 @@ import { Offer, OfferDetailed } from '../../types/offer';
 import { useParams, Navigate } from 'react-router-dom';
 import { AppRoute, FavoriteBtnClassModifier, FavoriteBtnSize } from '../../const';
 import { countRating } from '../../components/card/utils';
-import { turnFirstCharToUppercase } from './utils';
 import OfferGallery from '../../components/offer-gallery/offer-gallery';
 import AddToFavoriteButton from '../../components/add-to-favorite-btn/add-to-favorite-btn';
 import OfferFeatures from '../../components/offer-features/offer-features';
+import OfferGoods from '../../components/offer-goods/offer-goods';
 
 type OfferPageProps = {
   detailedOffers: OfferDetailed[];
@@ -100,9 +100,7 @@ function OfferPage({detailedOffers, offers} : OfferPageProps): JSX.Element {
                 <h2 className="offer__inside-title">What&apos;s inside</h2>
 
                 {/* в компонент */}
-                <ul className="offer__inside-list">
-                  {goods.map((good) => <li key={good} className="offer__inside-item">{good}</li>)}
-                </ul>
+                <OfferGoods goods={goods}/>
               </div>
 
               {/* в компонент */}
