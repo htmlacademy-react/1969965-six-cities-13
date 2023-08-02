@@ -9,7 +9,7 @@ type Location = {
   zoom: number;
 }
 
-type Host = {
+export type Host = {
   isPro: boolean;
   name: string;
   avatarUrl: string;
