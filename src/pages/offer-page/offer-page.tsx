@@ -7,6 +7,7 @@ import { countRating } from '../../components/card/utils';
 import { turnFirstCharToUppercase } from './utils';
 import OfferGallery from '../../components/offer-gallery/offer-gallery';
 import AddToFavoriteButton from '../../components/add-to-favorite-btn/add-to-favorite-btn';
+import OfferFeatures from '../../components/offer-features/offer-features';
 
 type OfferPageProps = {
   detailedOffers: OfferDetailed[];
@@ -89,19 +90,7 @@ function OfferPage({detailedOffers, offers} : OfferPageProps): JSX.Element {
 
                 <span className="offer__rating-value rating__value">{rating}</span>
               </div>
-
-              {/* в компонент */}
-              <ul className="offer__features">
-                <li className="offer__feature offer__feature--entire">{turnFirstCharToUppercase(type)}</li>
-                <li className="offer__feature offer__feature--bedrooms">
-              3 Bedrooms
-                </li>
-                <li className="offer__feature offer__feature--adults">
-              Max {maxAdults} adults
-                </li>
-              </ul>
-
-
+              <OfferFeatures type={type} maxAdults={maxAdults}/>
               <div className="offer__price">
                 <b className="offer__price-value">€{price}</b>
                 <span className="offer__price-text">&nbsp;night</span>
