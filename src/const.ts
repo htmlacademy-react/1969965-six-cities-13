@@ -4,7 +4,8 @@ export enum AppRoute {
   Root = '/',
   Favorites = '/favorites',
   Login = '/login',
-  Offer = '/offer'
+  Offer = '/offer',
+  Error = '/404'
 }
 
 export enum AuthorizationStatus {
@@ -12,3 +13,4 @@ export enum AuthorizationStatus {
   NoAuth = 'NO_AUTH',
   Unknown = 'UNKNOWN'
 }
+

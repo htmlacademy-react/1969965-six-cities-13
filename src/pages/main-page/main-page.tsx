@@ -1,4 +1,3 @@
-// import Card from '../../components/card/card.tsx';
 import Logo from '../../components/logo/logo.tsx';
 import { Helmet } from 'react-helmet-async';
 import { Offer } from '../../types/offer.ts';
@@ -14,6 +13,8 @@ function MainPage({offers}: MainScreenProps): JSX.Element {
       <Helmet>
         <title>6 cities</title>
       </Helmet>
+
+      {/* в компонент */}
       <header className="header">
         <div className="container">
           <div className="header__wrapper">
@@ -44,6 +45,8 @@ function MainPage({offers}: MainScreenProps): JSX.Element {
           </div>
         </div>
       </header>
+
+
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
