@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import { Offer, OfferDetailed } from '../../types/offer';
+import { OfferDetailed } from '../../types/offer';
 import { useParams, Navigate } from 'react-router-dom';
 import { AppRoute, PagesClassModifier, FavoriteBtnSize } from '../../const';
 import { countRating } from '../../components/card/utils';
@@ -14,11 +14,11 @@ import Reviews from '../../components/reviews/reviews';
 
 type OfferPageProps = {
   detailedOffers: OfferDetailed[];
-  offers: Offer[];
+  // offers: Offer[];
   reviews: Review[];
 }
 
-function OfferPage({detailedOffers, offers, reviews} : OfferPageProps): JSX.Element {
+function OfferPage({detailedOffers, reviews} : OfferPageProps): JSX.Element {
 
   const idContainer = useParams();
   const offer = detailedOffers.find((elem) => elem.id === idContainer.id);
@@ -27,7 +27,7 @@ function OfferPage({detailedOffers, offers, reviews} : OfferPageProps): JSX.Elem
     return <Navigate to = {AppRoute.Error} />;
   }
 
-  const { bedrooms, city, description, goods, id, host, images, isFavorite, isPremium, maxAdults, price, rating, title, type } = offer;
+  const { bedrooms, description, goods, host, images, isFavorite, isPremium, maxAdults, price, rating, title, type } = offer;
 
   return (
     <div className="page">
