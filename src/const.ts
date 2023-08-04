@@ -48,3 +48,10 @@ export const DateFormat = {
   MONTH_DAY: 'MMMM YYYY',
 };
 
+export const rating = {
+  '5': 'perfect',
+  '4': 'good',
+  '3': 'not bad',
+  '2': 'badly',
+  '1': 'terribly',
+};
