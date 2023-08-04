@@ -7,25 +7,26 @@ import OfferPage from '../../pages/offer-page/offer-page.tsx';
 import PrivateRoute from '../private-route/private-route.tsx';
 import { AppRoute, AuthorizationStatus } from '../../const.ts';
 import { HelmetProvider } from 'react-helmet-async';
+import { Offer, OfferDetailed } from '../../types/offer.ts';
+import { Review } from '../../types/review.ts';
 
 type AppScreenProps = {
-  proposals: number;
+  offers: Offer[];
+  detailedOffers: OfferDetailed[];
+  reviews: Review[];
 }
 
-function App({proposals}: AppScreenProps): JSX.Element {
+function App({offers, detailedOffers, reviews}: AppScreenProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
-          <Route
-            path={AppRoute.Root}
-            element={<MainPage proposals = {proposals}/>}
-          />
+          <Route path={AppRoute.Root} element={<MainPage offers = {offers} />}/>
           <Route
             path={AppRoute.Favorites}
             element={
-              <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
-                <FavoritesPage />
+              <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+                <FavoritesPage offers = {offers} />
               </PrivateRoute>
             }
           />
@@ -34,8 +35,8 @@ function App({proposals}: AppScreenProps): JSX.Element {
             element={<LoginPage />}
           />
           <Route
-            path={AppRoute.Offer}
-            element={<OfferPage />}
+            path={`${AppRoute.Offer}/:id`}
+            element={<OfferPage reviews={reviews} offers = {offers} detailedOffers = {detailedOffers}/>}
           />
           <Route
             path="*"

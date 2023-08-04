@@ -1,5 +1,7 @@
 import Logo from '../../components/logo/logo';
 import { Helmet } from 'react-helmet-async';
+import { LogoSize } from '../../const';
+import { PagesClassModifier } from '../../const';
 
 function LoginPage(): JSX.Element {
   return (
@@ -11,7 +13,7 @@ function LoginPage(): JSX.Element {
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
-              <Logo />
+              <Logo classModifier={PagesClassModifier.HEADER} size={LogoSize.HEADER}/>
             </div>
           </div>
         </div>

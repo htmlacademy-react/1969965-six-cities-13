@@ -1,18 +1,29 @@
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 
-function Logo(): JSX.Element {
+type LogoProps = {
+  classModifier: string;
+  size: {
+    width: number;
+    height: number;
+  };
+}
+
+function Logo({classModifier, size}: LogoProps): JSX.Element {
+  const {width, height} = size;
+
   return (
-    <Link className="header__logo-link" to={AppRoute.Root}>
+    <Link className={`${classModifier}__logo-link`} to={AppRoute.Root}>
       <img
-        className="header__logo"
+        className={`${classModifier}__logo`}
         src="img/logo.svg"
         alt="6 cities logo"
-        width={81}
-        height={41}
+        width={width}
+        height={height}
       />
     </Link>
   );
 }
 
 export default Logo;
+

@@ -1,4 +1,4 @@
-.page-404 {
+.page404 {
   color: #ffffff;
   width: 50%;
   margin: 250px auto 0;
@@ -9,7 +9,7 @@
   border-radius: 10px;
 }
 
-.page-404 a {
+.link {
   text-decoration: underline;
 }
 
