@@ -1,4 +1,13 @@
+import {useState, ChangeEvent} from 'react';
+
 function ReviewForm(): JSX.Element {
+  const [userReview, setUserReview] = useState('');
+
+  const textChangeHandler = (evt: ChangeEvent<HTMLTextAreaElement>) => {
+    evt.preventDefault();
+    setUserReview(evt.target.value);
+  };
+
   return (
     <form className="reviews__form form" action="#" method="post">
       <label className="reviews__label form__label" htmlFor="review">
@@ -87,11 +96,13 @@ function ReviewForm(): JSX.Element {
         </label>
       </div>
       <textarea
+        onChange={textChangeHandler}
         className="reviews__textarea form__textarea"
         id="review"
         name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
         defaultValue={''}
+        value={userReview}
       />
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
